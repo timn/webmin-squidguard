@@ -1,0 +1,111 @@
+
+ SquidGuard Configuration Webmin Module - CHANGES
+ Copyright (C) 2001 by Tim Niemueller <tim@niemueller.de>
+ http://www.niemueller.de/webmin/modules/squidguard/
+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ Created  : 18.06.2001
+
+
+
+ This file describes the changes made to the SquidGuard Webmin Module.
+ (Version history).
+
+
+ Changes
+ ==============================================================================
+ 10.06.2001  - First beta release on June 10th 2001
+ (0.85.1)
+ 18.06.2001  - Created Changes file tooo late
+ (0.86.1)    - Oh wow, I forgot all the calls to the delete for sections,
+               adding them
+             - del_section.cgi is not a good choice. Splitted it up to the
+               del_*.cgi files. One for each section, makes it much easier
+               and the code clearer! Also it interacts better with the
+               blacklist code
+             - Added Support for maintenance and import of blacklist.
+               import is still to be written. Maintenance works pretty good.
+               Now my mom calls for dinner :-)
+             - The output in edit_destgroup (domains and urls) is now sorted
+             - Binary can now be configured in the module configuration
+             - After a change "squidGuard -C file" is called automatically
+               to rebuild the database files. This allows runtime configuration
+               of SquidGuard tables.
+ 21.06.2001  - added del_rewgroup and disable blacklist
+             - added * enabled/disabled indicator in list_blacklists
+             - added stats display (enabled/disabled) in edit_blacklist
+             - added disable_blacklist
+             - re-added search possibility to edit_blacklist will not be
+               deleted.
+             - Updated the CHANGES file ;-)
+             - removed del_section
+             - Will push it put now
+ 18.10.2001  - Added german translation, thanks to Ch. Radau for this!
+ (0.88.1)    - Fixed bug that cause config to be corrupted when default ACL
+               was saved
+             - Added Support for user statement in sourcegroups
+             - Added support for userlists in sourcegroups
+ 22.10.2001  - Added Support for SQL databases that are available through DBI
+               for user lists. Enter the information needed in the module
+               configuration (example: DBI:mysql:userdb, user, passwd,
+               "SELECT username FROM users") and you will get a drop down list
+               for users you add to your source group.
+               Requested by Sponsor wesolv'IT, Aachen
+ 05.11.2001  - Added SQL SELECT support for userlist additions
+             - Incorporated patch by Alexandre Mathieu, this includes:
+               Rebuild blacklist dbs. Reload squid by sending HUP signal on
+               db rebuild
+             - fixed back link in index.cgi
+             - Fixating for new release
+ 02.11.2001  - 1st Advent :-)
+             - Fixed bug in save_sourcehost. Thanx to Ladislav Bárta
+             - Annoying bug in enable_blacklist fixed. Thanks to various
+               reporters.
+             - Fix wrong return URL in edit_sourceuserlist, thanks again to
+               Ladislav Bárta
+             - Fixed edit_bldomain cosmetics. Buttons must not always be
+               displayed. Thanks to Hajo Möller.
+             - More by Hajo Möller: Fixed eai_title in de lang, fixed
+               icons in list_sourcegroups.
+             - Fix wrong ACL in del_statement for timespace. Thanks to
+               Ben Humphrey for this one.
+             - Fix footer call in edit_sourceuser. Thanks to Ben Humphrey.
+             - Fixed icon.blacklist.gif. Resized the layer to image size to
+               get the image centered. Me
+             - Removed push() lines. I made that in a new loop in last
+               version and forgot to remove old Code. Reported by Ben Humphrey.
+               Also fix the loop to do what it is expected to do :-)
+             - Added french translation, thanks to Alexandre Mathieu
+             - Fixed bug in edit_bldomain. form field index was unset in
+               some cases or misset
+ 14.12.2001  - Change UID/GID of files used by SquidGuard to the ones of Squid
+               (to be set in module configuration). This fixes a bug that
+               caused SquidGuard processes to die since they are started as
+               the squid user and not as root, which webmin normally runs as
+             - Unlink .db files also if they exist and list files are
+               deleted.
+             - Chown downloaded blacklists
+               
+             
+
+
+ To do
+ ==============================================================================
+ - keep blacklist.local, a diff with local changes to the blacklist so that
+   they won't get erased after downloading new blacklists. Suggested by
+   Ryan Kather.
+ - Extra logging option
+ - Apply changes button
+ 
+
+
+### END of CHANGES ###.

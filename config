@@ -1,0 +1,12 @@
+conf=
+binary=
+pidfile=
+squiduid=
+squidgid=
+userdb=0
+dbisource=
+dbiuser=
+dbipass=
+usersql=
+userlistsql=
+userlisttext=

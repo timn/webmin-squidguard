@@ -1,0 +1,487 @@
+
+lang=de
+author=C. Radau@in-put.de
+modified_by=Tim Niemueller
+module_author=Tim Niemueller
+homepage=http://www.niemueller.de/webmin/modules/squidguard/
+copyright=(C) 2001 by Tim Niemueller <tim@niemueller.de>
+license=GPL
+
+config_link=<A HREF="/config.cgi?squidguard">Modul Konfiguration</A>
+
+global_within=innerhalb
+global_outside=außerhalb
+global_nots=Keine
+global_needmodernperl=Diese Software (SquidGuard Konfiguration Webmin Modul $1) benötigt Perl $2 oder höher. Ihr System erfüllt diese Voraussetzung nicht. Bitte aktualisieren Sie Ihre Perl Installation und versuchen Sie es erneut! (Die Fehlermeldung des OS war: $3)
+global_reserved=Sektionsnamen die mit 'bl_' beginnen sind reserviert für die BlackList Einträge. Bitte wählen Sie einen anderen Namen!
+global_needdbi=Sie haben ausgewählt, dass eine SQL Datenbank abgefragt werden soll, um Benutzer als Listen zur Verfügung zu stellen. Jedoch ist das benötigte Perl-Modul "DBI" nicht auf diesem System installiert. Schalten sie die Datenbankunterstützung in der <A HREF="/config.cgi?squidguard">Modul Konfiguration</A> ab oder installieren sie das Modul.
+
+lib_nobin=Konnte die Binary-Datei für SquidGuard nicht finden. Verwenden Sie die <A HREF="/config.cgi?squidguard">Modul Konfiguration</A> um den Ort anzugeben.
+
+index_title=SquidGuard
+index_return=Webmin Index
+index_paths=Verzeichnispfade
+index_time=Zeiträume
+index_source=Quell-Gruppen (Squid clients)
+index_dest=Ziel-Gruppen (Webserver)
+index_rewr=Überschreiben der Gruppenregeln
+index_acl=Zugriffskontrollregeln
+index_blacklist=Schwarze Liste
+index_noconfhead=Konfigurationsdatei nicht angegeben
+index_noconfdesc=Das SquidGuard Webmin Modul muß wissen, wo es nach der Konfigurationsdatei zu sehen hat. Bitte geben Sie den absoluten (!) Pfad in dem Feld unten ein.
+index_nofilehead=Die Konfigurationsdatei existiert nicht
+index_nofiledesc=Die Konfigurationsdatei die Sie in der Modulkonfiguration angegegeben haben existiert nicht. Klicken Sie auf "Erstellen". Das Modul wird dann eine Konfigurationsdatei ersellen (nachdem einige unbedingt erforderliche Informationen abgefragt wurden).
+index_squidnotarmedhead=Squid ist nicht konfiguriert
+index_squidnotarmedconf=Es hat den Anschein, als ob Squid noch nicht konfiguriert wurde, um SquidGuard als Redirect Programm zu verwenden. Dies ist unbedingt erforderlich um SquidGuard zu verwenden. Klicken Sie unten auf "Squid konfigurieren" um die notwendigen Änderungen in der Squid Konfigurationsdatei vorzunehmen.
+index_armsquid=Squid konfigurieren
+
+cpc_title=Grundlegende Konfigurationsdatei erstellen
+cpc_heading=Erstelle eine grundlegende Konfigurationsdatei
+cpc_desc=Diese Seite hilft Ihnen SquidGuard mit einer grundlegenden Konfiguration einzurichten. Bitte legen Sie unten fest wo die Datenbank-Dateien und die Log-Dateien gespeichert werden sollen. Verwenden Sie dabei absolute (!) Verzeichnispfade. (Z.B.: dbhome=/etc/squidguard/db, logdir=/var/log/squidguard)
+cpc_dbhome=Datenbank Verzeichnis
+cpc_logdir=Log-Dateien Verzeichnis
+cpc_desc2=Sie können in der grundlegenden Konfiguration festlegen, ob <b>Kein</b> Verkehr oder <b>Jeder</b> Verkehr erlaubt werden soll. Wählen Sie, je nach Ihren Plänen,  eine der Alternativen. Natürlich können Sie diese Regeln später in dem Modul ändern und anpassen!
+cpc_passall=Jeder Verkehr
+cpc_nothing=Kein Verkehr
+cpc_err_exists=Eine Konfigurationsdatei existiert bereits. Löschen Sie diese, bevor Sie versuchen eine neue zu erstellen.
+cpc_err_dir=Das Verzeichnis, das Ihre Konfigurationsdatei enthalten soll existiert nicht! Erstellen Sie dieses und laden Sie diese Seite erneut.
+cpc_err_dir2=Das Verzeichnis in den die Datenbank gespeichert werden soll existiert nicht oder ist lediglich eine Datei! Erstellen Sie das entsprechende Verzeichnis und laden Sie diese Seite erneut.
+cpc_err_dir3=Das Verzeichnis in dem die Log-Dateien gespeichert werden sollen existiert nicht oder ist lediglich eine Datei! Erstellen Sie das entsprechende Verzeichnis und laden Sie diese Seite erneut.
+
+arm_error=Die Konfiguration von Squid ist gescheitert
+arm_sgnotfound=SquidGuard konnte auf Ihrem System nicht entdeckt werden. Verwenden Sie die <A HREF="/config.cgi?squidguard">Modul Konfiguration</A> um das Problem zu korrigieren. Stellen Sie dabei sicher, daß die Datei ausführbar ist!
+arm_nobinhead=SquidGuard Binary konnte nicht entdeckt werden
+arm_nobindesc=Konnte die Binary für SquidGuard (die ausführbare Programmdatei) nicht in den Standard-Verzeichnissen finden. Bitte geben Sie den <i>absoluten</i> (!) Pfad zu dieser Datei an.
+
+epaths_title=Bearbeiten der Pfade
+epaths_return=Modul Index
+epaths_header=Bearbeiten der Pfade
+epaths_logdir=Verzeichnis der Log-Dateien
+epaths_dbhome=Verzeichnis der Datenbank
+epaths_acl=Sie haben keine Berechtigung die Pfadangaben zu bearbeiten.
+
+lts_title=Zeiträume
+lts_return=Modul Index
+lts_header=Liste der Zeiträume
+lts_newname=Name der neuen Zeiträume
+lts_add=Hinzufügen der Zeiträume
+lts_acl=Sie haben nicht die Berechtigung die Zeiträume zu bearbeiten.
+
+lsg_title=Quell-Gruppen (Squid Clients)
+lsg_return=Modul Index
+lsg_header=Liste der Quellgruppen (Squid clients)
+lsg_newname=Name der neuen Quellgruppe:
+lsg_add=Hinzufügen der Quellgruppe
+lsg_acl=Sie haben nicht die Berechtigung die Quell-Gruppen zu bearbeiten
+
+ldg_title=Ziel-Gruppen (Web-Server im Netz)
+ldg_return=Modul Index
+ldg_header=Liste der Ziel-Gruppen (Web-Server in Netz)
+ldg_newname=Name der neuen Ziel-Gruppe:
+ldg_add=Hinzufügen der Ziel-Gruppe
+ldg_acl=Sie haben nicht die Berechtigung die ACL (<b>A</b>ccess <b>C</b>ontrol <b>L</b>ist) zu bearbeiten
+
+lacls_title=Access Control Lists (Zugangskontrolle)
+lacls_return=Modul Index
+lacls_header=Liste alle Regeln
+lacls_source=Quell-Gruppe des neuen Punktes in der Zugangskontroll-Liste:
+lacls_add=Hinzufügen des ACL Punktes
+lacls_acl=Sie haben nicht die Berechtigung die Zugangskontrolle zu bearbeiten
+
+ets_title=Bearbeiten der Zeiträume
+ets_return=Liste der bestehenden Zeiträume
+ets_header=Zeiten definiert für Zeitraum '$1'
+ets_err_notfound=Kann den Zeitraum '$1' nicht entdecken
+ets_nost=Keine Anweisungen in diesem Zeitraum gefunden.
+ets_addweekly=Hinzufügen wöchentlich
+ets_adddate=Hinzufügen Datum
+ets_del=Lösche den Zeitraum
+ets_delst=Lösche
+ets_acl=Sie haben nicht die Berechtigung Zeiträume zu bearbeiten
+
+eweekly_title=Bearbeiten der Zeiten
+eweekly_titleadd=Hinzufügen von Zeiten
+eweekly_return=Bearbeiten des Zeitraums
+eweekly_header=Bearbeiten der wöchentlichen Zeiten des Zeitraums '$1'
+eweekly_days=Tage
+eweekly_all=Alle
+eweekly_selected=Ausgewählte
+eweekly_mon=Montag
+eweekly_tue=Dienstag
+eweekly_wed=Mittwoch
+eweekly_thu=Donnerstag
+eweekly_fri=Freitag
+eweekly_sat=Samstag
+eweekly_sun=Sonntag
+eweekly_from=Ab
+eweekly_to=Bis
+eweekly_format=(HH:MM)
+eweekly_acl=Sie haben nicht die Berechtigung Zeiträume zu bearbeiten
+
+edate_title=Bearbeiten des Datums
+edate_titleadd=Hinzufügen des Datums
+edate_return=Bearbeiten des Zeitraums
+edate_header=Bearbeiten des Datums für den Zeitraum '$1'
+edate_from=Genaues Start-Datum oder Beginn eines Bereiches
+edate_to=Stop Datum des Bereiches
+edate_fromtime=Zeit-Bereich Beginn
+edate_totime=Zeit-Bereich Ende
+edate_timeformat=(MM:HH)
+edate_dateformat=(YYYY / MM / DD)
+edate_type=Art der Datumsangabe
+edate_exact=Genaues Datum
+edate_range=Datumsbereich
+edate_acl=Sie haben nicht die Berechtigung die Zeitregeln zu bearbeiten
+
+esg_title=Bearbeite Quell-Gruppen (Squid clients)
+esg_return=Liste der Quell-Gruppen
+esg_header=Hosts die zur Quell-Gruppe '$1' gehören
+esg_addhost=Host hinzu
+esg_addrange=IP Bereich hinzu
+esg_addsubnet=Subnetz hinzu
+esg_adddomain=Domain hinzu
+esg_adduser=Benutzer hinzu
+esg_adduserlist=Benutzerliste hinzu
+esg_err_notfound=Kann die Quell-Gruppe '$1' nicht finden
+esg_nost=Keine Definitionen in dieser Quell-Gruppe.
+esg_nots=Keine
+esg_timespace=Zeitraum
+esg_acl=Sie haben nicht die Berechtigung die Quell-Gruppe zu bearbeiten
+esg_del=Lösche die Quell-Gruppe
+
+eshost_title=Bearbeiten des Host
+eshost_titleadd=Hinzufügen eines Host
+eshost_return=Bearbeiten der Quell-Gruppe
+eshost_header=Bearbeiten des Host '$1' der Quell-Gruppe '$2'
+eshost_headeradd=Hinzufügen des Host zur Quell-Gruppe '$2'
+eshost_ip=IP Adresse des Host
+eshost_acl=Sie haben nicht die Berechtigung die Quell-Gruppen zu bearbeiten
+
+edomain_title=Bearbeiten der Domain
+edomain_titleadd=Hinzufügen einer Domain
+edomain_return=Bearbeiten der Quell-Gruppe
+edomain_header=Bearbeiten der Domain '$1' der Quell-Gruppe '$2'
+edomain_headeradd=Hinzufügen der Domain zur Quell-Gruppe '$2'
+edomain_name=Domain Name
+edomain_acl=Sie haben nicht die Berechtigung die Quell-Gruppen zu bearbeiten
+
+esrange_title=Bearbeiten des Bereiches
+esrange_titleadd=Hinzufügen eines Bereiches
+esrange_return=Bearbeiten der Quell-Gruppe
+esrange_header=Bearbeiten des Bereiches '$1' der Quell-Gruppe '$2'
+esrange_headeradd=Hinzufügen eines Bereiches zur Quell-Gruppe  '$2'
+esrange_start=Start IP des Bereiches
+esrange_stop=End IP des Bereiches
+esrange_acl=Sie haben nicht die Berechtigung die Quell-Gruppen zu bearbeiten.
+
+essubnet_title=Bearbeiten des Subnet
+essubnet_titleadd=Hinzufügen eines Subnet
+essubnet_return=Bearbeiten der Quell-Gruppe
+essubnet_header=Bearbeiten des Subnet '$1' der Quell-Grupe '$2'
+essubnet_headeradd=Hinzufügen des Subnet zur Quell-Gruppe '$2'
+essubnet_network=Netzwerkadresse / Prefix
+essubnet_acl=Sie haben nicht die Berechtigung die Quell-Gruppen zu bearbeiten
+
+edg_title=Bearbeiten der Ziel-Gruppe
+edg_return=Liste der Ziel-Gruppen
+edg_domains=Domains der Ziel-Gruppe '$1'
+edg_urls=URLs der Ziel-Gruppe '$1'
+edg_expressions=Reguläre Ausdrücke (regexps) für die Ziel-Gruppe '$1'
+edg_adddomain=Hinzufügen einer Domain
+edg_addurl=Hinzufügen einer URL
+edg_addexpr=Hinzufügen eines Ausdrucks (regexps)
+edg_timespace=Zeitraum
+edg_search=Suche
+edg_list=Führe alle auf
+edg_err_notfound=Kann Ziel-Gruppe '$1' nicht entdecken
+edg_nodom=Keine Domains für diese Ziel-Gruppe entdeckt.
+edg_nourl=Keine URLs für diese Ziel-Gruppe entdeckt.
+edg_noexpr=Keine Ausdrücke für diese Ziel-Gruppe entdeckt.
+edg_acl=Sie haben nicht die Berechtigung die Ziel-Gruppen zu bearbeiten.
+edg_del=Lösche die Ziel-Gruppe
+
+lrg_title=Rewrite Gruppen
+lrg_header=Liste der Rewrite Gruppen
+lrg_return=Modul Index
+lrg_newname=Name der neuen Rewrite Gruppe:
+lrg_add=Hinzufügen der Rewrite Gruppe
+lrg_acl=Sie haben nicht die Berechtigung die Rewrite Gruppen zu bearbeiten
+
+erg_title=Bearbeiten der Rewrite Gruppen
+erg_header=Bearbeiten der Rewrite Regeln der Rewrite Gruppe '$1'
+erg_from=Zeichenkette
+erg_to=durch Zeichenkette
+erg_return=Liste der Rewrite Gruppen
+erg_addrule=Hinzufügen der Rewrite Regel
+erg_norule=Keine Rewrite Regel entdeckt für diese Rewrite Gruppe.
+erg_flags=Parameter
+erg_err_notfound=Konnte die Rewrite Gruppe '$1' nicht entdecken
+erg_acl=Sie haben nicht die Berechtigung die Rewrite Gruppen zu bearbeiten
+erg_del=Lösche diese Rewrite Gruppe
+
+eddom_title=Bearbeiten der Domain
+eddom_titleadd=Hinzufügen der Domain
+eddom_return=Bearbeiten der Ziel-Gruppe
+eddom_header=Bearbeiten der Domain der Ziel-Gruppe '$1'
+eddom_headeradd=Hinzufügen einer Domain zur Ziel-Gruppe '$1'
+eddom_name=Domain Name
+eddom_nosrchres=Es konnte keine Domain entdeckt werden, die zu Ihrer Anfrage passt.
+eddom_multiple=Mit Ihrer Anfrage konnte mehr als eine Domain gefunden werden. Bitte wählen Sie die Passende aus:
+eddom_acl=Sie haben nicht die Berechtigung die Ziel-Gruppen zu bearbeiten
+
+edurl_title=Bearbeiten einer URL
+edurl_titleadd=Hinzufügen einer URL
+edurl_return=Bearbeiten der Ziel-Gruppe
+edurl_header=Bearbeiten einer URL der Ziel-Gruppe '$1'
+edurl_headeradd=Hinzufügen einer URL zu der Ziel-Gruppe '$1'
+edurl_name=URL
+edurl_nosrchres=Es konnte keine URL entdeckt werden, die zu Ihrer Anfrage passt.
+edurl_acl=Sie haben nicht die Berechtigung die Ziel-Gruppen zu bearbeiten
+
+edexpr_title=Bearbeiten eines Ausdrucks
+edexpr_titleadd=Hinzufügen eines Ausdrucks
+edexpr_return=Bearbeiten der Ziel-Gruppe
+edexpr_header=Bearbeiten eines Ausdrucks der Ziel-Gruppe '$1'
+edexpr_name=Ausdruck
+edexpr_nosrchres=Es konnte kein Ausdruck entdeckt werden, der zu Ihrer Anfrage passt.
+edexpr_multiple=Mit Ihrer Anfrage wurde mehr als ein Ausdruck gefunden. Bitte wählen Sie den Passenden aus:
+edexpr_acl=Sie haben nicht die Berechtigung die Ziel-Gruppen zu bearbeiten.
+
+edrew_title=Bearbeiten der Rewrite Regeln
+edrew_titleadd=Hinzufügen einer Rewrite Regel
+edrew_header=Bearbeite Rewrite Regel der Rewrite Gruppe '$1'
+edrew_headeradd=Hinzufügen der Rewrite Regel zur Rewrite Gruppe '$1'
+edrew_from=Ersetze die Zeichenkette
+edrew_to=Mit der Zeichenkette
+edrew_return=Bearbeite die Rewrite Gruppe
+edrew_casein=Keine Groß- und Kleinschreibung
+edrew_movetemp=Sende "Vorübergehend umgezogen // Moved Temporarily"
+edrew_moveperm=Sende "Endgültig umgezogen // Moved Permanently"
+edrew_acl=Sie haben nicht die Berechtigung die Rewrite Ausdrücke zu bearbeiten
+
+spaths_error=Speichern der Pfadangaben gescheitert
+spaths_logdir=Ungültiges Log-Verzeichnis.
+spaths_dbhome=Ungültiges Datenbank-Verzeichnis.
+spaths_acl=Sie haben nicht die Berechtigung die Pfadangaben zu bearbeiten
+
+sweekly_error=Speichern des wöchentlichen Zeitraumes ist gescheitert
+sweekly_acl=Sie haben nicht die Berechtigung die (wöchentlichen) Zeiträume zu bearbeiten
+
+sdate_error=Speichern des Datums gescheitert
+sdate_acl=Sie haben nicht die Berechtigung die Zeiträume (Datum) zu bearbeiten
+
+ssh_error=Speichern des Quell-Host gescheitert
+ssh_invalid=Die Eingabe ist keine gültige IP!
+
+ssr_error=Speichern des Quell-Bereiches ist gescheitert
+ssr_inv_begin=Ungültige IP als Beginn des Bereiches
+ssr_inv_end=Ungültige IP als Ende des Bereiches
+ssr_inv_range=Ungültiger Bereich. Die Start-IP muß kleiner sein als die End-IP. Schussel!
+ssr_acl=Sie haben nicht die Berechtigung die Quell-Gruppen zu bearbeiten
+
+sss_error=Speichern des Subnet gescheitert
+sss_inv_net=Ungültige Netzerk Adresse
+sss_inv_prfx=Ungültiger Prefix angegeben
+sss_acl=Sie haben nicht die Berechtigung die Quell-Gruppen zu bearbeiten
+
+sdd_error=Speichern der Ziel-Domain gescheitert
+sdd_invalid=Ungültiger Domain Name
+sdd_nofilename=Kann den Dateinamen der Domain-Liste nicht entdecken
+
+sdu_error=Speichern der Ziel URL gescheitert
+sdu_nofilename=Kann den Dateinamen der URL-Liste nicht entdecken
+
+sse_error=Speichern des Ziel-Ausdrucks gescheitert
+sse_invalid=Ungültiger Ausdruck
+
+eai_title=Bearbeiten eines Access Control List Elements
+eai_titleadd=Hinzufügen eines ACL Elements
+eai_header=Bearbeiten eines ACL Elements
+eai_headeradd=Hinzufügen des ACL Elements
+eai_source=Quell-Gruppe
+eai_srcna=N/A als Standard
+eai_within=innerhalb
+eai_outside=außerhalb
+eai_dest=Ziel<BR>Gruppen
+eai_rew=Rewrite<BR>Gruppen
+eai_bl=Schwarze Listen
+eai_tstype=Zeitabschnitt Modus
+eai_timespace=Zeitabscnitt
+eai_in-addr=IPs
+eai_any=Jede
+eai_none=Keine
+eai_redirect=Umleitungs URL
+eai_return=Führe ACLs auf
+eai_movedtemp=301 Vorübergehend // Temporarily
+eai_movedperm=302 Endgültig // Permanent
+eai_default=Standard
+eai_tsmnone=Keine
+eai_acl=Sie haben nicht die Berechtigung die ACL Elemente zu bearbeiten
+
+ssts_error=Speichern der Zeitabschnitt Einstellungen für die Quell-Gruppe gescheitert
+
+ds_acl=Sie haben nicht die Berechtigung diese Art von Abschnitt zu löschen. Bitte kontaktieren Sie Ihren Systemadministrator, wenn Sie glauben, dass dies nicht richtig ist.
+dst_acl=Sie haben nicht die Berechtigung Ausdrücke aus dieser Art von Abschnitt zu löschen. Bitte kontaktieren Sie Ihren Systemadministrator, wenn Sie glauben, dass dies nicht richtig ist.
+
+acl_epaths=Ist es dem User erlaubt die Pfadangaben zu bearbeiten?
+acl_esource=Ist es dem User erlaubt die Quell-Gruppen zu bearbeiten?
+acl_edest=Ist es dem User erlaubt die Ziel-Gruppen zu bearbeiten?
+acl_etimespace=Ist es dem User erlaubt Zeiträume zu bearbeiten?
+acl_erewrite=Ist es dem User erlaubt Rewrite Gruppen zu bearbeiten?
+acl_eacl=Ist es dem User erlaubt ACL Einstellungen zu bearbeiten?
+acl_eblacklist=Ist es dem User erlaubt, die Schwarze Liste zu bearbeiten?
+
+aai_nosource=Sie haben noch keine Quell-Gruppe definiert
+aai_acl=Sie haben nicht die Berechtigung ACL Elemente hinzuzufügen.
+
+adg_acl=Sie haben nicht die Berechtigung, um Ziel-Gruppen zu erstellen
+arg_acl=Sie haben nicht die Berechtigung, um Rewrite Gruppen zu erstellen
+asg_acl=Sie haben nicht die Berechtigung, um Quell-Gruppen zu erstellen
+ats_acl=Sie haben nicht die Berechtigung, um Zeiträume zu erstellen
+sai_acl=Sie haben nicht die Berechtigung, um ACL Elemente zu bearbeiten
+sdd_acl=Sie haben nicht die Berechtigung, um Ziel-Gruppen zu bearbeiten
+sde_acl=Sie haben nicht die Berechtigung, um Ziel-Gruppen zu bearbeiten
+sdts_acl=Sie haben nicht die Berechtigung, um Ziel-Gruppen zu bearbeiten
+sdu_acl=Sie haben nicht die Berechtigung, um Ziel-Gruppen zu berabeiten
+srew_acl=Sie haben nicht die Berechtigung, um Rewrite Gruppen zu bearbeiten
+srt_acl=Sie haben nicht die Berechtigung, um Rewrite Gruppen zu bearbeiten
+ssd_acl=Sie haben nicht die Berechtigung, um Quell-Gruppen zu bearbeiten
+esh_acl=Sie haben nicht die Berechtigung, um Quell-Hosts zu bearbeiten
+ssls_acl=Sie haben nicht die Berechtigung, um Quell-Hosts zu bearbeiten
+sst_acl=Sie haben nicht die Berechtigung, um Quell-Gruppen zu bearbeiten
+
+lbl_title=Auflistung der Schwarzen Listen
+lbl_acl=Sie haben nicht die Berechtigung, um Schwarze Listen zu bearbeiten.
+lbl_header=Schwarze Listen
+lbl_nobl=Keine Schwarzen Listen entdeckt!
+lbl_getbl=Download Schwarze Listen
+
+ebl_title=Bearbeiten der Schwarzen Listen
+ebl_acl=Sie haben nicht die Berechtigung die Schwarzen Listen zu bearbeiten
+ebl_domains=Domains in dieser Schwarzen Liste
+ebl_nodom=Keine Domains in dieser Schwarzen Liste entdeckt
+ebl_adddomain=Hinzufügen einer Domain
+ebl_urls=URLs die in dieser Schwarzen Liste zu entdecken sind
+ebl_nourl=Keine URLs in dieser Schwarzen Liste entdeckt
+ebl_addurl=Hinzufügen einer URL
+ebl_return=Schwarze Listen
+ebl_enable=Aktiviere diese Schwarze Liste
+ebl_disable=Deaktiviere diese Schwaze Liste
+ebl_status=Diese Schwarze Liste ist $1
+ebl_sten=<FONT COLOR=green>aktiviert</FONT>
+ebl_stdis=<FONT COLOR=red>deaktiviert</FONT>
+ebl_search=Suchen
+ebl_list=Führe alle auf
+ebl_nodom=Keine Domains in dieser Schwarzen Liste entdeckt.
+
+ebd_title=Bearbeite Domain
+ebd_titleadd=Hinzufügen einer Domain
+ebd_return=Bearbeite Schwarze Liste
+ebd_header=Bearbeite Domain der Schwarzen Liste '$1'
+ebd_headeradd=Hinzufügen der Domain zur Schwarzen Liste '$1'
+ebd_name=Domain Name
+ebd_acl=Sie haben nicht die Berechtigung die Schwarzen Listen zu bearbeiten
+ebd_nosrchres=Es konnte keine Domain gefunden werden, die Ihrer Anfrage entspricht.
+ebd_multiple=Es wurden mehrere Domains entdeckt, die Ihrer Suche entsprechen. Bitte wählen Sie die Passende:
+
+sbd_acl=Sie haben nicht die Berechtigung die Schwarze Listen zu bearbeiten
+sbd_error=Das Speichern der Domain in die Schwarze Liste ist gescheitert
+sbd_invalid=Ungültiger Domain Name
+
+ebu_title=Bearbeite URL
+ebu_titleadd=Hinzufügen einer URL
+ebu_return=Bearbeite Schwarze Liste
+ebu_header=Bearbeite die URL der Schwarzen Liste '$1'
+ebu_headeradd=Füge die URL zur Schwarzen Liste '$1' hinzu
+ebu_name=URL
+ebu_acl=Sie haben nicht die Berechtigung, um Schwarze Listen zu bearbeiten
+
+sbu_acl=Sie haben nicht die Berechtigung die Schwarzen Listen zu bearbeiten
+sbu_error=Speichern der URL in die Schwarzen Liste ist gescheitert
+sbu_invalid=Ungültige URL
+
+enbl_error=Aktivierung der Schwarzen Liste ist gescheitert
+enbl_acl=Sie haben nicht die Berechtigung die Schwarzen Listen zu aktivieren
+enbl_notexist=Die Schwarze Liste die Sie angegeben haben existiert nicht!
+enbl_nodata=Die Schwarze Liste enthält keinerlei Daten (weder Domain noch URL Daten)
+enbl_already=Die Schwarze Liste ist bereits aktiviert
+
+ddg_title=Lösche die Ziel-Gruppe
+ddg_return=Bearbeiten der Ziel-Gruppe
+ddg_header=Lösche die Ziel-Gruppe '$1'
+ddg_desription=Es wird die Ziel-Gruppe '$1' gelöscht.
+ddg_confirm=Ja doch, lösche die Ziel-Gruppe
+
+dts_title=Lösche Zeitraum
+dts_return=Bearbeite Zeitraum
+dts_header=Lösche Zeitraum '$1'
+dts_desription=Es wird die Zeitraum '$1' gelöscht.
+dts_confirm=Ja doch, lösche den Zeitraum
+
+dsg_title=Lösche die Quell-Gruppe
+dsg_return=Bearbeite die Quell-Gruppe
+dsg_header=Lösche die Quell-Gruppe '$1'
+dsg_desription=Es wird die Quell-Gruppe '$1' gelöscht.
+dsg_confirm=Ja doch, lösche die Quell-Gruppe
+
+drg_title=Lösche Rewrite Gruppe
+drg_return=Bearbeite Rewrite Gruppe
+drg_header=Lösche die Rewrite Gruppe '$1'
+drg_desription=Es wird die Rewrite Gruppe '$1' gelöscht.
+drg_confirm=Ja doch, lösche die Rewrite Gruppe
+
+dbl_title=Deaktiviere Schwarze Liste
+dbl_return=Bearbeite Schwarze Liste
+dbl_header=Deaktiviere Schwarze Liste '$1'
+dbl_desription=Es wird die Schwarze Liste '$1' deaktiviert. Dies bedeutet, dass Sie diese nicht mehr aus der Liste der ACL Einträge auswählen können und dass alle bestehenden Verweise zu dieser Schwarzen Liste entfernt werden.
+dbl_confirm=Ja doch, deaktiviere die Schwarze Liste
+
+gbl_nolists=Die Datei enhält keinerlei gültige Schwarze Liste!
+gbl_extract=Ein Fehler ist aufgetreten beim Auslesen der Datei: $1
+gbl_title=Download Schwarze Liste(n)
+gbl_header=Download der Schwarzen Liste(n) ist beendet
+gbl_lists=Die folgende(n) Schwarze(n) Liste(n) wurde(n) heruntergeladen:
+gbl_goto=Wechsel zu den Schwarzen Listen
+gbl_invurl=Ungültige URL angegeben
+gbl_error=Download gescheitet
+gbl_comp=Die Datei ist komprimiert. Jedoch konnte $1 nicht gefunden werden.
+gbl_gzip=Die Datei ist mit gzip komprimiert. Jedoch konnte $1 nicht gefunden werden.
+gbl_ecomp=Uncompress gescheitert: $1
+gbl_egzip=GZIP gescheitert: $1
+gbl_nolists=Die Datei enthält keinerlei Schwarze Liste oder sie ist nicht in einem mit SquidGuard kompatiblen Format.
+gbl_extract=Auslesen der Datei $1 gescheitert
+gbl_return=Liste der Schwarzen Listen
+gbl_header2=Download von
+gbl_get=Ja doch, Download!
+
+sacl_default=Sie können die Standard ACL nicht löschen!
+sacl_none=Sie haben keine zu löschende ACL angegeben.
+
+esuser_title=Benutzer bearbeiten
+esuser_titleadd=Benutzer hinzu
+esuser_return=Bearbeiten der Quellgruppe
+esuser_header=Bearbeiten des Benutzers '$1' der Quell-Gruppe '$2'
+esuser_headeradd=Hinzufügen eines Benutzers zur Quell-Gruppe '$2'
+esuser_name=Benutzer-Name
+esuser_acl=Sie haben nicht die Berechtigung die Quell-Gruppen zu bearbeiten
+
+ssd_error=Speicher der Domain schlug fehl
+ssd_invalid=Ungültiger Domain Name
+
+ssu_error=Speichern des Benutzers schlug fehl
+ssu_acl=Sie haben keine Berechtigun Quellgruppen zu berbeiten
+ssu_invalud=Ungültiger Benutzername
+
+esuserlist_title=Benutzerliste bearbeiten
+esuserlist_titleadd=Benutzerliste hinzu
+esuserlist_return=Quell-Gruppe bearbeiten
+esuserlist_header=Bearbeite Benutzerliste '$1' aus Quellgruppe '$2'
+esuserlist_headeradd=Füge Benutzerliste hinzu zu Quell-Gruppe '$2'
+esuserlist_name=Name der Benutzerliste
+esuserlist_users=Benutzer
+esuserlist_acl=Sie haben keine Berechtigun Quellgruppen zu berbeiten
+esuserlist_deftext=Suchen nach:
+
+ssul_error=Speichern der Benutzerliste schlug fehl
+ssul_acl=Sie haben keine Berechtigun Quellgruppen zu berbeiten
+ssul_invalid=Ungültiger Name für eine Benutzerliste

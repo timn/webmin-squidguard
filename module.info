@@ -1,0 +1,6 @@
+name=squidguard
+desc=SquidGuard
+desc_de=SquidGuard
+os_support=solaris redhat-linux debian-linux slackware-linux suse-linux aix hpux freebsd osf1 irix
+depends=0.85 squid
+category=servers

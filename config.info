@@ -1,0 +1,12 @@
+conf=Full path to SquidGuard configuration file,0
+binary=Full path to binary for SquidGuard,3,Automatic
+pidfile=Full path to PID file of Squid,0
+squiduid=User that Squid runs as,5
+squidgid=Group that Squid runs as,6
+userdb=Use Database to extract user information,1,1-Yes,0-No
+dbisource=DBI source,0
+dbiuser=DBI user,0
+dbipass=DBI Passwot (this password is saved as plain text, you should give a read only user!),0
+usersql=SELECT statement for user list (only first field in result is used),0
+userlistsql=SELECT statement for userlist addition (use @FIELD@ for input user input),0
+userlisttext=Text to display to the user in userlist before @FIELD@ addition

@@ -1,0 +1,450 @@
+lang=fr
+author=Tim Niemueller
+module_author=Tim Niemueller
+homepage=http://www.niemueller.de/webmin/modules/squidguard/
+copyright=(C) 2001 by Tim Niemueller <tim@niemueller.de>
+license=GPL
+
+config_link=<A HREF="/config.cgi?squidguard">module configuration</A>
+
+global_within=within
+global_outside=outside
+global_nots=aucun
+global_needmodernperl=This software (SquidGuard Configuration Webmin Module $1) needs Perl $2 or higher. Your System does not meet this requirement. Please upgrade your Perl installation and try it again! (Error message from OS was: $3)
+global_reserved=Section names beginning with 'bl_' are reserved for blacklist entries. Please choose another name!
+
+lib_nobin=Impossible de trouver l'éxécutble  'squidGuard'. Utilisez la <A HREF="/config.cgi?squidguard">configuration du module</A> pour le spécifier.
+
+index_title=SquidGuard
+index_return=l'index de Webmin
+index_paths=Chemins d'accès
+index_time=Plages horaires
+index_source=Clients
+index_dest=Destinations
+index_rewr=Règles de réécriture
+index_acl=Listes de contrôle d'accès
+index_blacklist=Listes noires
+index_noconfhead=Fichier de configuration non défini
+index_noconfdesc=Ce module doit connaître l'emplacement du ficher de configuration de SquidGuar. Veuillez saisir le chemin d'accès absolu (!).
+index_nofilehead=Le fichier de configuration n'existe pas
+index_nofiledesc=Le fichier de configuration de SquidGuard saisie dans la configuration du module n'existe pas. En cliquant sur 'Créer', le module va générer un fichier de configuration de base (après vous avoir demandé quelques informations).
+index_squidnotarmedhead=Squid n'est pas configuré
+index_squidnotarmedconf=Il semble que Squid ne soit pas configuré pour utiliser SquidGuard comme redirecteur. C'est pourtant indispensable au fonctionnement de SquidGuard. Cliquer sur 'Configurer Squid' pour apporter les modifications nécess au fichier de configuration de Squid.
+index_armsquid=Configurer Squid
+
+cpc_title=Créer une configuration de base
+cpc_heading=Créer un fichier de configuration de base
+cpc_desc=This page iwll help you to setup your SquidGuard with a basic configuration. Please define below where you want the database files and log files to be store. Use full (!) path names to the directories of this entries. (Examples: dbhome=/etc/squidguard/db, logdir=/var/log/squidguard)
+cpc_dbhome=Répertoire des bases de données
+cpc_logdir=Répertoire des journaux
+cpc_desc2=You can decide below whether the basic configuration file will allow all traffic or now traffic. Depending on what you want to do you can decide between those settings. You may change them later in the module!
+cpc_passall=All traffic
+cpc_nothing=No traffic
+cpc_err_exists=The configuration file already exists. Delete it before you try to create a new one
+cpc_err_dir=The directory where you want your config file to reside does not exist! Create it and reload this page.
+cpc_err_dir2=The directory where you want your database home to reside does not exist or it is not a directory but a regular file! Create the directory and reload this page.
+cpc_err_dir3=The directory where you want your log files to reside does not exist or it is not a directory but a regular file! Create the directory and reload this page.
+
+arm_error=Echec de la configuration de Squid
+arm_sgnotfound=SquidGuard could not been found on your system. Use the <A HREF="/config.cgi?squidguard">module configuration</A> to correct the problem. Make sure that the file is executable!
+arm_nobinhead=L'éxécutable 'squidGuard' est introuvable
+arm_nobindesc=Could not find the binary for SquidGuard (this is the executable program file) in the default locations. Please specify the location below with its <I>absolute</I> path.
+
+epaths_title=Editer les chemins d'accès
+epaths_return=l'index du module
+epaths_header=Editer les chemins d'accès
+epaths_logdir=Répertoire des journaux
+epaths_dbhome=Répertoire des bases de données
+epaths_acl=Vous n'êtes pas autorisé à modifier les chemins d'accès
+
+lts_title=Plages horaires
+lts_return=l'index du module
+lts_header=Liste des plages horaires
+lts_newname=Nom de la nouvelle plage horaire
+lts_add=Ajouter une plage horaire
+lts_acl=Vous n'êtes pas autorisé à modifier les plages horaires
+
+lsg_title=Clients 
+lsg_return=l'index du module
+lsg_header=Liste des clients
+lsg_newname=Identifiant des nouveaux clients :
+lsg_add=Ajouter de nouveaux clients
+lsg_acl=Vous n'êtes pas autorisé à modifier les clients
+
+ldg_title=Destinations
+ldg_return=l'index du module
+ldg_header=Liste des destinations (Serveurs Web)
+ldg_newname=Identifiant des destinations:
+ldg_add=Ajouter de nouvelles destinations
+ldg_acl=Vous n'êtes pas autorisé à modifier les destinations
+
+lacls_title=Listes de conrôle d'accès
+lacls_return=l'index du module
+lacls_header=Liste des règles
+lacls_source=Clients pour la nouvelle règle :
+lacls_add=Ajouter une règle 
+lacls_acl=Vous n'êtes pas autoriser à modifier la liste de contrôle d'accès
+
+ets_title=Edition des plages horaires
+ets_return=la liste des plages horaires
+ets_header=Horaire définis pour la plage '$1'
+ets_err_notfound=La plage horaire '$1' est introuvable
+ets_nost=Plage horaire vide.
+ets_addweekly=Ajouter un jour de la semaine
+ets_adddate=Ajouter une date
+ets_del=Effacer une plage horaire
+ets_delst=Effacer
+ets_acl=Vous n'êtes pas autorisé à modifier les plages horaires
+
+eweekly_title=Edit Time
+eweekly_titleadd=Ajouter un jour de la semaine
+eweekly_return=la liste des plages horaires
+eweekly_header=Editer les jours de la semaine pour la plage horaire '$1'
+eweekly_days=Jour
+eweekly_all=Tous
+eweekly_selected=Sélectionnés
+eweekly_mon=Lundi
+eweekly_tue=Mardi
+eweekly_wed=Mercredi
+eweekly_thu=Jeudi
+eweekly_fri=Vendredi
+eweekly_sat=Samedi
+eweekly_sun=Dimanche
+eweekly_from=De
+eweekly_to=à
+eweekly_format=(HH:MM)
+eweekly_acl=Vous n'êtes pas autorisé à modifier les plages horaires.
+
+edate_title=Edit Date
+edate_titleadd=Ajouter une date
+edate_return=la liste des plages horaires
+edate_header=Editer les dates pour la plage horaire '$1'
+edate_from=Date ou début de la plage de dates
+edate_to=Fin de la plage de dates
+edate_fromtime=Début de la plage horaire
+edate_totime=Fin de la plage horaire
+edate_timeformat=(MM:HH)
+edate_dateformat=(AAAA / MM / DD)
+edate_type=Type de date :
+edate_exact=Date donnée
+edate_range=Plage de dates 
+edate_acl=You are not allowed to edit date statements in time spaces
+
+esg_title=Edition des clients
+esg_return=la liste des clients
+esg_header=Hôtes définis pour les clients '$1'
+esg_addhost=Ajouter un hôte
+esg_addrange=Ajouter un plage d'adresses IP
+esg_addsubnet=Ajouter un sous-réseau IP
+esg_adddomain=Ajouter un domaine
+esg_err_notfound=Impossible de trouve le groupe de client '$1'
+esg_nost=Aucune définition dans ce groupe de clients.
+esg_nots=Aucune
+esg_timespace=Plage horaire
+esg_acl=Vous n'êtes pas autorisé à modifier les clients
+esg_del=Effacer les clients
+
+eshost_title=Editer un hôte
+eshost_titleadd=Ajouter un hôte
+eshost_return=l'édition des clients
+eshost_header=Editer l'hôte '$1' pour les clients '$2'
+eshost_headeradd=Add Host to sourcegroup '$2'
+eshost_ip=Adresse IP de l'hôte
+eshost_acl=Vous n'êtes pas autorisé à modifier les clients
+
+edomain_title=Editer un domaine
+edomain_titleadd=Ajouter un domaine
+edomain_return=l'édition des clients
+edomain_header=Editer le domaine '$1' pour les clients '$2'
+edomain_headeradd=Ajouter un domaine aux clients '$2'
+edomain_name=Nom de domaine
+edomain_acl=Vous n'êtes pas autorisé à modifier les clients
+
+esrange_title=Editer un plage d'adresses IP
+esrange_titleadd=Ajouter une plage d'adresses IP
+esrange_return=l'édition des clients
+esrange_header=Editer le plage d'adresses '$1' pour les clients '$2'
+esrange_headeradd=Ajouter une plage d'adresses aux clients '$2'
+esrange_start=Début de la plage d'adresses IP
+esrange_stop=Fin de la plage d'adresses IP
+esrange_acl=Vous n'êtes pas autorisé à modifier les clients
+
+essubnet_title=Editer un sous-réseau IP
+essubnet_titleadd=Ajouter un sous-réseau IP
+essubnet_return=éditer les clients
+essubnet_header=Editer le sous-réseau IP '$1' pour les clients '$2'
+essubnet_headeradd=Ajouter un sous-réseau IP aux clients '$2'
+essubnet_network=Adresse du réseau IP / Suffixe
+essubnet_acl=Vous n'êtes pas autorisé à modifier les clients
+
+edg_title=Editer les destinations
+edg_return=list of destination groups
+edg_domains=Domaines pour les destinations '$1'
+edg_urls=URLs pour les destinations '$1'
+edg_expressions=Expressions régulères pour les destinations '$1'
+edg_adddomain=Ajouter un domaine
+edg_addurl=Ajouter une URL
+edg_addexpr=Ajouter une expression régulière
+edg_timespace=Plage horaire
+edg_search=Rechercher
+edg_list=Tout afficher
+edg_err_notfound=Cannot find a destination group named '$1'
+edg_nodom=Aucun domaine pour ces destinations.
+edg_nourl=Aucune URL pour ces destinations.
+edg_noexpr=Aucune expressions régulières pour ces destinations.
+edg_acl=Vous n'êtes pas autorisé à modifier ces destinations
+edg_del=Effacer ces destinations
+
+lrg_title=Règles de réécriture
+lrg_header=Liste des règles de réécriture
+lrg_return=l'index du module
+lrg_newname=Nom de la règle :
+lrg_add=Ajouter une règle
+lrg_acl=Vous n'êtes pas autorisé à modifier les règles de réécriture
+
+erg_title=Edition des motifs de réécriture
+erg_header=Editer un motif de réécriture de la règle '$1'
+erg_from=Subset string
+erg_to=with string
+erg_return=liste des règles de réécriture
+erg_addrule=Ajouter un motif de réécriture
+erg_norule=Aucun motif de réécriture pour cette règle
+erg_flags=Flags
+erg_err_notfound=Rewrite group named '$1'not found
+erg_acl=Vous n'êtes pas autorisé à modifier les règles de réécriture
+erg_del=Effacer cette règle de réécriture
+
+eddom_title=Edit Domain
+eddom_titleadd=Add Domain
+eddom_return=edit destgroup
+eddom_header=Edit Domain from Destination Group '$1'
+eddom_headeradd=Add Domain to Destination Group '$1'
+eddom_name=Domain Name
+eddom_nosrchres=No domain found matching your query.
+eddom_multiple=I have found more than one domain for you query. Please choose your candidate:
+eddom_acl=You are not allowed to edit destination groups
+
+edurl_title=Editer une URL
+edurl_titleadd=Ajouter une URL
+edurl_return=edit destgroup
+edurl_header=Edit URL from Destination Group '$1'
+edurl_headeradd=Add URL to Destination Group '$1'
+edurl_name=URL
+edurl_nosrchres=Aucune URL ne correspond à votre requète.
+edurl_acl=You are not allowed to edit destination groups
+
+edexpr_title=Edit Expression
+edexpr_titleadd=Add Expression
+edexpr_return=edit destgroup
+edexpr_header=Edit Expression from Destination Group '$1'
+edexpr_name=Expression
+edexpr_nosrchres=No expression found matching your query.
+edexpr_multiple=I have found more than one expression for you query. Please choose your candidate:
+edexpr_acl=You are not allowed to edit destination groups.
+
+edrew_title=Edition d'un motif de réécriture
+edrew_titleadd=Ajouter un motif de réécriture
+edrew_header=Editer un motif de réécriture de la règle '$1'
+edrew_headeradd=Ajouter un motif à la régle '$1'
+edrew_from=Remplacer la chaîne de caractères
+edrew_to=par
+edrew_return=edit rewrite group
+edrew_casein=Insensible à la casse
+edrew_movetemp=Send "Moved Temporarily"
+edrew_moveperm=Send "Moved Permanently"
+edrew_acl=Vous n'êtes pas autorisé à modifier les motifs de réécriture
+
+spaths_error=Saving of path settings failed
+spaths_logdir=Invalid log directory.
+spaths_dbhome=Invalid database directory.
+spaths_acl=You are not allowed to edit path information
+
+sweekly_error=Saving of weekly time failed
+sweekly_acl=You are not allowed to edit timespaces
+
+sdate_error=Saving of date failed
+sdate_acl=You are not allowed to edit time spaces
+
+ssh_error=Saving of source host failed
+ssh_invalid=Input is not a valid IP!
+
+ssr_error=Saving of source range failed
+ssr_inv_begin=Invalid IP for begin of range
+ssr_inv_end=Invalid IP for end of range
+ssr_inv_range=Invalid Range. Start IP must be smaller than end IP!
+ssr_acl=You are not allowed to edit source groups
+
+sss_error=Saving of Subnet failed
+sss_inv_net=Invalid network address
+sss_inv_prfx=Invalid prefix given
+sss_acl=You are not allowed to edit source groups
+
+sdd_error=Saving of destination domain failed
+sdd_invalid=Invalid Domain Name
+sdd_nofilename=Cannot get filename for domain list file
+
+sdu_error=Saving of destination url failed
+sdu_nofilename=Cannot get filename for url list file
+
+sse_error=Saving of destination expression failed
+sse_invalid=Invalid Expression
+
+eai_title=Editer une règle
+eai_titleadd=Ajouter une règle
+eai_header=Editer une règle
+eai_headeradd=Ajouter une règle
+eai_source=Clients
+eai_srcna=N/A for default
+eai_within=dans
+eai_outside=hors de
+eai_dest=Destinations
+eai_rew=Règles de réécriture
+eai_bl=Listes noires
+eai_tstype=Timespace Mode
+eai_timespace=Plages horaires
+eai_in-addr=IPs
+eai_any=Any
+eai_none=None
+eai_redirect=Rediriger vers l'URL :
+eai_return=list ACLs
+eai_movedtemp=301 Temporaire
+eai_movedperm=302 Permanent
+eai_default=Défaut
+eai_tsmnone=None
+eai_acl=Vous n'êtes pas autorisé à modifier les règles
+
+ssts_error=Saving of timespace setting for sourcegroup failed
+
+ds_acl=You have not the permission to delete this kind of section. Please contact your system administrator if you think that this is not right.
+dst_acl=You are not allowed to delete statements in this kind of section.  Please contact your system administrator if you think that this is not right.
+
+acl_epaths=User is allowed to edit path settings?
+acl_esource=User is allowed to edit source groups?
+acl_edest=User is allowed to edit destination groups?
+acl_etimespace=User is allowed to edit timespaces?
+acl_erewrite=User is allowed to edit rewrite groups?
+acl_eacl=User is allowed to edit ACL settings?
+acl_eblacklist=User is allowed to edit blacklists?
+
+aai_nosource=You have not defined a sourcegroup
+aai_acl=You are not allowed to add acl items.
+
+adg_acl=You are not allowed to create destination groups
+arg_acl=You are not allowed to create rewrite groups
+asg_acl=You are not allowed to create source groups
+ats_acl=You are not allowed to create time spaces
+sai_acl=You are not allowed to edit ACL items
+sdd_acl=You are not allowed to edit destination groups
+sde_acl=You are not allowed to edit destination groups
+sdts_acl=You are not allowed to edit destination groups
+sdu_acl=You are not allowed to edit destination groups
+srew_acl=You are not allowed to edit rewrite groups
+srt_acl=You are not allowed to edit rewrite groups
+ssd_acl=You are not allowed to edit source groups
+esh_acl=You are not allowed to edit source hosts
+ssls_acl=You are not allowed to edit source groups
+sst_acl=You are not allowed to edit source groups
+
+lbl_title=Listes noires
+lbl_acl=Vous n'êtes pas autorisé à modifier les listes noires
+lbl_header=Listes noires
+lbl_nobl=Aucune liste noire n'est définie!
+lbl_getbl=Télécharger les listes noires
+
+ebl_title=Editer la liste noire
+ebl_acl=You are not allowed to edit blacklists
+ebl_domains=Domaines dans la liste noire
+ebl_nodom=Aucun domaine dans la liste noire
+ebl_adddomain=Ajouter un domaine
+ebl_urls=URLs dans la liste noire 
+ebl_nourl=Pas URLs dans cette liste noire
+ebl_addurl=Ajouter une URL
+ebl_return=liste noire
+ebl_enable=Activer cette liste noire
+ebl_disable=Désactiver cette liste noire
+ebl_status=Cette liste noire est $1
+ebl_sten=<FONT COLOR=green>activée</FONT>
+ebl_stdis=<FONT COLOR=red>désactivée</FONT>
+ebl_search=Rechercher
+ebl_list=Tout afficher
+ebl_nodom=Aucun domaine dans cette liste noire
+
+ebd_title=Editer un domaine
+ebd_titleadd=Ajouter un domaine
+ebd_return=editer la liste noire
+ebd_header=Editer un domaine de la liste noire '$1'
+ebd_headeradd=Ajouter un domaine à la liste noire '$1'
+ebd_name=Nom de domaine
+ebd_acl=Vous n'êtes pas autorisé à modifier les listes noires
+ebd_nosrchres=Aucun domaine ne correspond à votre requète
+ebd_multiple=Plusiuers domaines correspondent à votre requète. Sélectionner le candidat :
+
+sbd_acl=You are not allowed to edit blacklists
+sbd_error=Saving of blacklist domain failed
+sbd_invalid=Nom de domaine invalide
+
+ebu_title=Editer une URL
+ebu_titleadd=Ajouter une URL
+ebu_return=éditer la liste noire
+ebu_header=Editer l'URL de la liste noire '$1'
+ebu_headeradd=Ajoute une URL à la liste noire '$1'
+ebu_name=URL
+ebu_acl=You are not allowed to edit blacklists
+
+sbu_acl=You are not allowed to edit blacklists
+sbu_error=Saving of blacklist URL failed
+sbu_invalid=URL invalide
+
+enbl_error=Enabling the blacklist failed
+enbl_acl=You are not allowed to enable blacklists
+enbl_notexist=The blacklist you gave does not exist!
+enbl_nodata=The blacklist does not contain any data (no domain or URL files)
+enbl_already=The blacklist is already enabled
+
+ddg_title=Delete Destination Group
+ddg_return=edit destination group
+ddg_header=Delete Destination Group '$1'
+ddg_desription=This will delete the destination group called '$1'.
+ddg_confirm=Yes, delete destination group
+
+dts_title=Delete Timespace
+dts_return=edit timespace
+dts_header=Delete Timespace '$1'
+dts_desription=This will delete the timespace called '$1'.
+dts_confirm=Yes, delete timespace
+
+dsg_title=Delete Source Group
+dsg_return=edit source group
+dsg_header=Delete Source Group '$1'
+dsg_desription=This will delete the source group called '$1'.
+dsg_confirm=Yes, delete source group
+
+drg_title=Delete Rewrite Group
+drg_return=edit rewrite group
+drg_header=Delete Rewrite Group '$1'
+drg_desription=This will delete the rewrite group called '$1'.
+drg_confirm=Yes, delete rewrite group
+
+dbl_title=Désactiver la liste noire
+dbl_return=editer la liste noire
+dbl_header=Désactiver la liste noire '$1'
+dbl_desription=Vous allez déactiver la liste noire '$1'. Cela signifie que vous ne pourrez plus ajouter cette liste noire à vos listes de contrôle d'accès et que toutes les références existantes à cette liste noire seront effacées.
+dbl_confirm=Confirmation
+
+gbl_nolists=Ce fichier ne contient aucune liste noire valide!
+gbl_extract=Une erreur est survenue lors de l'analyse du fichier: $1
+gbl_title=Téléchargement de listes noires
+gbl_header=Téléchargement des listes noires terminé 
+gbl_lists=Les listes noires suivantes ont été téléchargées
+gbl_goto=Goto Blacklists
+gbl_invurl=L'URL est invalide
+gbl_error=Le téléchargment a échoué 
+gbl_comp=File is compressed. But $1 cannot be found.
+gbl_gzip=File is gzip compressed. But $1 cannot be found.
+gbl_ecomp=Uncompress failed: $1
+gbl_egzip=GZIP failed: $1
+gbl_nolists=The file does not contain any blacklists or they are not in a squidguard.org compatible format.
+gbl_extract=Extraction of the files failed: $1
+gbl_return=listes noires
+gbl_header2=Télécharger depuis :
+gbl_get=Télécharger!

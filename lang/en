@@ -1,0 +1,493 @@
+
+lang=en
+author=Tim Niemueller
+module_author=Tim Niemueller
+homepage=http://www.niemueller.de/webmin/modules/squidguard/
+copyright=(C) 2001 by Tim Niemueller <tim@niemueller.de>
+license=GPL
+
+config_link=<A HREF="/config.cgi?squidguard">module configuration</A>
+
+global_within=within
+global_outside=outside
+global_nots=None
+global_needmodernperl=This software (SquidGuard Configuration Webmin Module $1) needs Perl $2 or higher. Your System does not meet this requirement. Please upgrade your Perl installation and try it again! (Error message from OS was: $3)
+global_reserved=Section names beginning with 'bl_' are reserved for blacklist entries. Please choose another name!
+global_needdbi=You have selected to use a SQL database to get user lists, but the needed Perl module "DBI" is not installed on your machine. Turn that feature off in the <A HREF="/config.cgi?squidguard">module configuration</A> or install the module.
+global_dbi_con=Cannot connect to database via DBI ($1). Check <A HREF="/config.cgi?squidguard">module configuration</A>.
+global_dbi_prep=Cannot prepare SQL ($1). Check <A HREF="/config.cgi?squidguard">module configuration</A>.
+global_dbi_exec=Cannot execute SQL ($1). Check <A HREF="/config.cgi?squidguard">module configuration</A>.
+
+lib_nobin=Could not find binary for SquidGuard. Use the <A HREF="/config.cgi?squidguard">module configuration</A> to specify it.
+
+index_title=SquidGuard
+index_return=webmin index
+index_paths=Paths
+index_time=Time Spaces
+index_source=Source Groups
+index_dest=Destination Groups
+index_rewr=Rewrite Rule Groups
+index_acl=Access Control Rules
+index_blacklist=Blacklists
+index_noconfhead=Configuration File not defined
+index_noconfdesc=The SquidGuard Webmin Module must know where it should look for the configuration file. Please enter the absolute (!) path below in the form.
+index_nofilehead=Configuration File does not exist
+index_nofiledesc=The configuration file that you configured in the module configuration does not exist. Click below on 'Create'. Then themodule will create a basic configuration file (after asking for the minimum information needed).
+index_squidnotarmedhead=Squid not configured
+index_squidnotarmedconf=It seems that Squid is not configured to use the SquidGuard as redirect program. That is essentially needed to use SquidGuard. Click below on "Configure Squid" to make the changes to the Squid configuration file.
+index_armsquid=Configure Squid
+index_nougidhead=UID/GID not set
+index_nougiddesc=The SquidGuard Webmin Modules must now, as which user and group the Squid daemon runs as.
+index_user=User
+index_group=Group
+
+cpc_title=Create Basic Config
+cpc_heading=Create a basic configuration file
+cpc_desc=This page iwll help you to setup your SquidGuard with a basic configuration. Please define below where you want the database files and log files to be store. Use full (!) path names to the directories of this entries. (Examples: dbhome=/etc/squidguard/db, logdir=/var/log/squidguard)
+cpc_dbhome=Database Directory
+cpc_logdir=Log Directory
+cpc_desc2=You can decide below whether the basic configuration file will allow all traffic or now traffic. Depending on what you want to do you can decide between those settings. You may change them later in the module!
+cpc_passall=All traffic
+cpc_nothing=No traffic
+cpc_err_exists=The configuration file already exists. Delete it before you try to create a new one
+cpc_err_dir=The directory where you want your config file to reside does not exist! Create it and reload this page.
+cpc_err_dir2=The directory where you want your database home to reside does not exist or it is not a directory but a regular file! Create the directory and reload this page.
+cpc_err_dir3=The directory where you want your log files to reside does not exist or it is not a directory but a regular file! Create the directory and reload this page.
+
+arm_error=Configuration of Squid failed
+arm_sgnotfound=SquidGuard could not been found on your system. Use the <A HREF="/config.cgi?squidguard">module configuration</A> to correct the problem. Make sure that the file is executable!
+arm_nobinhead=SquidGuard Binary not found
+arm_nobindesc=Could not find the binary for SquidGuard (this is the executable program file) in the default locations. Please specify the location below with its <I>absolute</I> path.
+
+epaths_title=Edit Paths
+epaths_return=module index
+epaths_header=Edit Paths
+epaths_logdir=Logging Directory
+epaths_dbhome=Database Directory
+epaths_acl=You are not allowed to edit path information
+
+lts_title=Timespaces
+lts_return=module index
+lts_header=List of timespaces
+lts_newname=Name for new timespace
+lts_add=Add Timespace
+lts_acl=You are not allowed to edit timespaces
+
+lsg_title=Sourcegroups
+lsg_return=module index
+lsg_header=List of originating groups (Clients of Squid)
+lsg_newname=Name for new source group:
+lsg_add=Add Source Group
+lsg_acl=You are not allowed to edit source groups
+
+ldg_title=Destination Groups
+ldg_return=module index
+ldg_header=List of destination groups groups (Servers on the Web)
+ldg_newname=Name for new destination group:
+ldg_add=Add Destination Group
+ldg_acl=You are not allowed to edit the ACL
+
+lacls_title=Access Control Lists
+lacls_return=module index
+lacls_header=List of All Rulesets
+lacls_source=Source Group for new ACL item:
+lacls_add=Add ACL Item
+lacls_acl=You are not allowed to edit the ACL
+
+ets_title=Edit Timespace
+ets_return=list of timespaces
+ets_header=Times defined for timespace '$1'
+ets_err_notfound=Cannot find a timespace named '$1'
+ets_nost=No statements found in this timespace.
+ets_addweekly=Add Weekly
+ets_adddate=Add Date
+ets_del=Delete Timespace
+ets_delst=Delete
+ets_acl=You are not allowed to edit timespaces
+
+eweekly_title=Edit Time
+eweekly_titleadd=Add Time
+eweekly_return=edit timespace
+eweekly_header=Edit Weekly Time for Timespace '$1'
+eweekly_days=Days
+eweekly_all=All
+eweekly_selected=Selected
+eweekly_mon=Monday
+eweekly_tue=Tuesday
+eweekly_wed=Wednesday
+eweekly_thu=Thursday
+eweekly_fri=Friday
+eweekly_sat=Saturday
+eweekly_sun=Sunday
+eweekly_from=From
+eweekly_to=To
+eweekly_format=(HH:MM)
+eweekly_acl=You are not allowed to edit timespaces
+
+edate_title=Edit Date
+edate_titleadd=Add Date
+edate_return=edit timespace
+edate_header=Edit Date for Timespace '$1'
+edate_from=Exact or range start date
+edate_to=Range stop date
+edate_fromtime=Time Range Begin
+edate_totime=Time Range End
+edate_timeformat=(MM:HH)
+edate_dateformat=(YYYY / MM / DD)
+edate_type=Type of Date Definition
+edate_exact=Exact Date
+edate_range=Date Range
+edate_acl=You are not allowed to edit date statements in time spaces
+
+esg_title=Edit Sourcegroup
+esg_return=list of sourcegroups
+esg_header=Hosts defined for Sourcegroup '$1'
+esg_addhost=Add Host
+esg_addrange=Add Range
+esg_addsubnet=Add Subnet
+esg_adddomain=Add Domain
+esg_adduser=Add User
+esg_adduserlist=Add Userlist
+esg_err_notfound=Cannot find a sourcegroup named '$1'
+esg_nost=No definitions in this sourcegroup.
+esg_nots=None
+esg_timespace=Timespace
+esg_acl=You are not allowed to edit sourcegroups
+esg_del=Delete Sourcegroup
+
+eshost_title=Edit Host
+eshost_titleadd=Add Host
+eshost_return=edit sourcegroup
+eshost_header=Edit Host '$1' from Sourcegroup '$2'
+eshost_headeradd=Add Host to sourcegroup '$2'
+eshost_ip=IP Address of Host
+eshost_acl=You are not allowed to edit source groups
+
+edomain_title=Edit Domain
+edomain_titleadd=Add Domain
+edomain_return=edit sourcegroup
+edomain_header=Edit Domain '$1' from Sourcegroup '$2'
+edomain_headeradd=Add Domain to Sourcegroup '$2'
+edomain_name=Domain Name
+edomain_acl=You are not allowed to edit source groups
+
+esrange_title=Edit range
+esrange_titleadd=Add Range
+esrange_return=edit sourcegroup
+esrange_header=Edit range '$1' from Sourcegroup '$2'
+esrange_headeradd=Add range to Sourcegroup '$2'
+esrange_start=Begin IP of range
+esrange_stop=end IP of range
+esrange_acl=You are not allowed to edit source groups
+
+essubnet_title=Edit Subnet
+essubnet_titleadd=Add Subnet
+essubnet_return=edit sourcegroup
+essubnet_header=Edit Subnet '$1' from Sourcegroup '$2'
+essubnet_headeradd=Add Subnet to Sourcegroup '$2'
+essubnet_network=Network Address / Prefix
+essubnet_acl=You are not allowed to edit source groups
+
+edg_title=Edit Destination Group
+edg_return=list of destination groups
+edg_domains=Domains for Destination group '$1'
+edg_urls=URLs for Destination group '$1'
+edg_expressions=Regular Expressions for Destination group '$1'
+edg_adddomain=Add Domain
+edg_addurl=Add URL
+edg_addexpr=Add Expression
+edg_timespace=Timespace
+edg_search=Search
+edg_list=List All
+edg_err_notfound=Cannot find a destination group named '$1'
+edg_nodom=No Domains found for this destination group.
+edg_nourl=No URLs found for this destination group.
+edg_noexpr=No regular expressions found for this destination group.
+edg_acl=You are not allowed to edit destination groups
+edg_del=Delete Destination Group
+
+lrg_title=Rewrite Groups
+lrg_header=List of Rewrite Groups
+lrg_return=module index
+lrg_newname=Name for new rewrite group:
+lrg_add=Add Rewrite Group
+lrg_acl=You are not allowed to edit rewrite groups
+
+erg_title=Edit Rewrite Group
+erg_header=Edit Rewrite Rules from Rewrite Group '$1'
+erg_from=Subset string
+erg_to=with string
+erg_return=list of rewrite groups
+erg_addrule=Add Rewrite Rule
+erg_norule=No rewrite rule found for this rewrite group.
+erg_flags=Flags
+erg_err_notfound=Rewrite group named '$1'not found
+erg_acl=You are not allowed to edit rewrite groups
+erg_del=Delete this Rewrite Group
+
+eddom_title=Edit Domain
+eddom_titleadd=Add Domain
+eddom_return=edit destgroup
+eddom_header=Edit Domain from Destination Group '$1'
+eddom_headeradd=Add Domain to Destination Group '$1'
+eddom_name=Domain Name
+eddom_nosrchres=No domain found matching your query.
+eddom_multiple=I have found more than one domain for you query. Please choose your candidate:
+eddom_acl=You are not allowed to edit destination groups
+
+edurl_title=Edit URL
+edurl_titleadd=Add URL
+edurl_return=edit destgroup
+edurl_header=Edit URL from Destination Group '$1'
+edurl_headeradd=Add URL to Destination Group '$1'
+edurl_name=URL
+edurl_nosrchres=No URL found matching your query.
+edurl_acl=You are not allowed to edit destination groups
+
+edexpr_title=Edit Expression
+edexpr_titleadd=Add Expression
+edexpr_return=edit destgroup
+edexpr_header=Edit Expression from Destination Group '$1'
+edexpr_name=Expression
+edexpr_nosrchres=No expression found matching your query.
+edexpr_multiple=I have found more than one expression for you query. Please choose your candidate:
+edexpr_acl=You are not allowed to edit destination groups.
+
+edrew_title=Edit Rewrite Rule
+edrew_titleadd=Add Rewrite Rule
+edrew_header=Edit Rewrite Rule from Rewrite Group '$1'
+edrew_headeradd=Add Rewrite Rule to Rewrite Group '$1'
+edrew_from=Replace String
+edrew_to=With String
+edrew_return=edit rewrite group
+edrew_casein=Case Insensitive
+edrew_movetemp=Send "Moved Temporarily"
+edrew_moveperm=Send "Moved Permanently"
+edrew_acl=You are not allowed to edit rewrite statements
+
+spaths_error=Saving of path settings failed
+spaths_logdir=Invalid log directory.
+spaths_dbhome=Invalid database directory.
+spaths_acl=You are not allowed to edit path information
+
+sweekly_error=Saving of weekly time failed
+sweekly_acl=You are not allowed to edit timespaces
+
+sdate_error=Saving of date failed
+sdate_acl=You are not allowed to edit time spaces
+
+ssh_error=Saving of source host failed
+ssh_invalid=Input is not a valid IP!
+
+ssr_error=Saving of source range failed
+ssr_inv_begin=Invalid IP for begin of range
+ssr_inv_end=Invalid IP for end of range
+ssr_inv_range=Invalid Range. Start IP must be smaller than end IP!
+ssr_acl=You are not allowed to edit source groups
+
+sss_error=Saving of Subnet failed
+sss_inv_net=Invalid network address
+sss_inv_prfx=Invalid prefix given
+sss_acl=You are not allowed to edit source groups
+
+sdd_error=Saving of destination domain failed
+sdd_invalid=Invalid Domain Name
+sdd_nofilename=Cannot get filename for domain list file
+
+sdu_error=Saving of destination url failed
+sdu_nofilename=Cannot get filename for url list file
+
+sse_error=Saving of destination expression failed
+sse_invalid=Invalid Expression
+
+eai_title=Edit ACL Item
+eai_titleadd=Add ACL Item
+eai_header=Edit ACL Item
+eai_headeradd=Add ACL Item
+eai_source=Sourcegroup
+eai_srcna=N/A for default
+eai_within=within
+eai_outside=outside
+eai_dest=Destination<BR>Groups
+eai_rew=Rewrite<BR>Groups
+eai_bl=Blacklists
+eai_tstype=Timespace Mode
+eai_timespace=Timespace
+eai_in-addr=IPs
+eai_any=Any
+eai_none=None
+eai_redirect=Redirect URL
+eai_return=list ACLs
+eai_movedtemp=301 Temporarily
+eai_movedperm=302 Permanent
+eai_default=Default
+eai_tsmnone=None
+eai_acl=You are not allowed to edit ACL items
+
+ssts_error=Saving of timespace setting for sourcegroup failed
+
+ds_acl=You have not the permission to delete this kind of section. Please contact your system administrator if you think that this is not right.
+dst_acl=You are not allowed to delete statements in this kind of section.  Please contact your system administrator if you think that this is not right.
+
+acl_epaths=User is allowed to edit path settings?
+acl_esource=User is allowed to edit source groups?
+acl_edest=User is allowed to edit destination groups?
+acl_etimespace=User is allowed to edit timespaces?
+acl_erewrite=User is allowed to edit rewrite groups?
+acl_eacl=User is allowed to edit ACL settings?
+acl_eblacklist=User is allowed to edit blacklists?
+
+aai_nosource=You have not defined a sourcegroup
+aai_acl=You are not allowed to add acl items.
+
+adg_acl=You are not allowed to create destination groups
+arg_acl=You are not allowed to create rewrite groups
+asg_acl=You are not allowed to create source groups
+ats_acl=You are not allowed to create time spaces
+sai_acl=You are not allowed to edit ACL items
+sdd_acl=You are not allowed to edit destination groups
+sde_acl=You are not allowed to edit destination groups
+sdts_acl=You are not allowed to edit destination groups
+sdu_acl=You are not allowed to edit destination groups
+srew_acl=You are not allowed to edit rewrite groups
+srt_acl=You are not allowed to edit rewrite groups
+ssd_acl=You are not allowed to edit source groups
+esh_acl=You are not allowed to edit source hosts
+ssls_acl=You are not allowed to edit source groups
+sst_acl=You are not allowed to edit source groups
+
+lbl_title=List Blacklists
+lbl_acl=You are not allowed to edit blacklists.
+lbl_header=Blacklists
+lbl_nobl=No blacklists found!
+lbl_getbl=Download Blacklists
+
+ebl_title=Edit Blacklist
+ebl_acl=You are not allowed to edit blacklists
+ebl_domains=Domains in this blacklist
+ebl_nodom=No domains found in this blacklist
+ebl_adddomain=Add Domain
+ebl_urls=URLs found in this blacklist
+ebl_nourl=No URLs found in this blacklist
+ebl_addurl=Add URL
+ebl_return=blacklists
+ebl_enable=Enable this blacklist
+ebl_disable=Disable this blacklist
+ebl_status=This blacklist is $1
+ebl_sten=<FONT COLOR=green>enabled</FONT>
+ebl_stdis=<FONT COLOR=red>disabled</FONT>
+ebl_search=Search
+ebl_list=List All
+ebl_nodom=No Domains found for this blacklist.
+
+ebd_title=Edit Domain
+ebd_titleadd=Add Domain
+ebd_return=edit blacklist
+ebd_header=Edit Domain from blacklist '$1'
+ebd_headeradd=Add Domain to blacklist '$1'
+ebd_name=Domain Name
+ebd_acl=You are not allowed to edit blacklists
+ebd_nosrchres=No domain found matching your query.
+ebd_multiple=I have found more than one domain for you query. Please choose your candidate:
+
+sbd_acl=You are not allowed to edit blacklists
+sbd_error=Saving of blacklist domain failed
+sbd_invalid=Invalid Domain Name
+
+ebu_title=Edit URL
+ebu_titleadd=Add URL
+ebu_return=edit blacklist
+ebu_header=Edit URL from blacklist '$1'
+ebu_headeradd=Add URL to blacklist '$1'
+ebu_name=URL
+ebu_acl=You are not allowed to edit blacklists
+
+sbu_acl=You are not allowed to edit blacklists
+sbu_error=Saving of blacklist URL failed
+sbu_invalid=Invalid URL
+
+enbl_error=Enabling the blacklist failed
+enbl_acl=You are not allowed to enable blacklists
+enbl_notexist=The blacklist you gave does not exist!
+enbl_nodata=The blacklist does not contain any data (no domain or URL files)
+enbl_already=The blacklist is already enabled
+
+ddg_title=Delete Destination Group
+ddg_return=edit destination group
+ddg_header=Delete Destination Group '$1'
+ddg_desription=This will delete the destination group called '$1'.
+ddg_confirm=Yes, delete destination group
+
+dts_title=Delete Timespace
+dts_return=edit timespace
+dts_header=Delete Timespace '$1'
+dts_desription=This will delete the timespace called '$1'.
+dts_confirm=Yes, delete timespace
+
+dsg_title=Delete Source Group
+dsg_return=edit source group
+dsg_header=Delete Source Group '$1'
+dsg_desription=This will delete the source group called '$1'.
+dsg_confirm=Yes, delete source group
+
+drg_title=Delete Rewrite Group
+drg_return=edit rewrite group
+drg_header=Delete Rewrite Group '$1'
+drg_desription=This will delete the rewrite group called '$1'.
+drg_confirm=Yes, delete rewrite group
+
+dbl_title=Disable Blacklist
+dbl_return=edit blacklist
+dbl_header=Disable Blacklist '$1'
+dbl_desription=This will disable the blacklist called '$1'. This means that you cannot longer choose it as a blacklist for you ACL items and that existing references to this blacklist will be deleted.
+dbl_confirm=Yes, disable blacklist
+
+gbl_nolists=The file does not contain any valid blacklists!
+gbl_extract=An error occured when extracting the file: $1
+gbl_title=Download Blacklists
+gbl_header=Download of Blacklists complete
+gbl_lists=The following blacklists have been downloaded:
+gbl_goto=Goto Blacklists
+gbl_invurl=Invalid URL given
+gbl_error=Downloading failed
+gbl_comp=File is compressed. But $1 cannot be found.
+gbl_gzip=File is gzip compressed. But $1 cannot be found.
+gbl_ecomp=Uncompress failed: $1
+gbl_egzip=GZIP failed: $1
+gbl_nolists=The file does not contain any blacklists or they are not in a squidguard.org compatible format.
+gbl_extract=Extraction of the files failed: $1
+gbl_return=list of blacklists
+gbl_header2=Download from
+gbl_get=Download!
+
+sacl_default=You cannot delete the default ACL!
+sacl_none=No ACL item given.
+
+esuser_title=Edit User
+esuser_titleadd=Add User
+esuser_return=edit sourcegroup
+esuser_header=Edit User '$1' from Sourcegroup '$2'
+esuser_headeradd=Add User to Sourcegroup '$2'
+esuser_name=User Name
+esuser_acl=You are not allowed to edit source groups
+
+ssd_error=Saving of domain failed
+ssd_invalid=Invalid Domain Name
+
+ssu_error=Saving of user failed
+ssu_acl=You are not allowed to edit source groups
+ssu_invalid=Invalid user name
+
+esuserlist_title=Edit Userlist
+esuserlist_titleadd=Add Userlist
+esuserlist_return=edit sourcegroup
+esuserlist_header=Edit Userlist '$1' from Sourcegroup '$2'
+esuserlist_headeradd=Add Userlist to Sourcegroup '$2'
+esuserlist_name=Userlist Name
+esuserlist_users=Users
+esuserlist_acl=You are not allowed to edit source groups
+esuserlist_deftext=Search for:
+
+ssul_error=Saving of userlist failed
+ssul_acl=You are not allowed to edit source groups
+ssul_invalid=Invalid userlist name
