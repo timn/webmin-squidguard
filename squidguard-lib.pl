@@ -449,7 +449,7 @@ sub find_section {
     my $ok=1;
     for (keys %args) {
       next if ($_ eq 'config');
-      if ($c->{$_} !~ /^$args{$_}$/) {
+      if ($c->{$_} !~ /^(\Q$args{$_}\E)$/) {
         $ok=0;
         last;
       }
